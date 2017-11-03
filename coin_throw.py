@@ -5,6 +5,17 @@ import random
 
 print("Program rzuci 100 razy monetą i wyliczy ile razy wypadła reszka, a ile orzeł")
 
+def throw_counter(throws = 1, tail = 0, reverse = 0):
+	while throws != 101:
+		score = random.randint(0, 1)
+		if score:
+			reverse +=1
+		else: 
+			tail +=1
+		throws +=1
+	return tail, reverse
+		
+		
 throws = 1
 reverse = 0
 tail = 0
