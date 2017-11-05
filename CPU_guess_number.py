@@ -2,36 +2,34 @@
 
 import random
 
-#Powitanie
-print("Witaj \nZostaniesz poproszony po podanie liczby. Zadaniem komputera będzie zgadnąć jaka to liczba")
-
-#Podanie liczby
-print("\nPomyśl liczbę od jednego do stu. Podpowiadaj komputerowi mówiąc czy liczba jest większa bądź mniejsza od pomyślanej")
+#Welcome and intruct
+print("HELLO!!! \nPlease think about some number in range from 1 to 100. Computer will try to guess the number")
+print("Give a clues to computer if guess number is higher or lower than your\n\n")
 
 
-min = 1
-max = 100
-tries = 1
-guess = random.randint(min, max)
-print(guess)
-result = ""
+# Function which takes tries counter 
+def guessing(tries = 1):
+	min = 1
+	max = 100
+	guess = random.randint(min, max)
+	print(guess)
+	result = None
+	while result != "OK":
+		result = input("\n\nYour number is higher than given by computer, lower or OK? ")
+		if result == "higher":
+			min = guess
+			guess = random.randint(min, max)
+			print(guess)
+		elif result == "lower":
+			max = guess
+			guess = random.randint(min, max)
+			print(guess)
+		elif result == "OK":
+			print("\nComputer guessed your number in",tries,"attempts")
+		tries += 1
 
-while result != "OK":
-	result = input("Czy Twoja liczba jest wyższa od podanej (higher) niższa (lower) czy OK? ")
-	tries += 1
-	if result == "higher":
-		min = guess
-		guess = random.randint(min, max)
-		print(guess)
-	elif result == "lower":
-		max = guess
-		guess = random.randint(min, max)
-		print(guess)
-	elif result == "OK":
-		print(guess)
-		print("Komputer zgadł liczbę w ", tries, " podejść")
-	
-	
-print("Komputer zgadł podaną przez Ciebie liczbę. Potrzebował na to ", tries, "prób.")
+guessing()
 
-input("\n\nAby zakończyć program, naciśnij klawisz Enter.")
+
+
+input("\n\nPlease press enter key if you want exit\n\n")
